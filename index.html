@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-csp>
+<head>
+<meta name="description" content="Manage Extensino">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" /> 
+   <link href="assets/css/style.css" rel="stylesheet" type="text/css" /> 
+</head>
+<body ng-controller="mainController">
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+         <div class="row">
+      <div class="col-md-5 left-segment hidden-sm hidden-xs">
+        
+        <div class="row" style="margin-top:30px">
+          <div class="col-md-8 col-md-offset-2 text-center text-white">
+            <img ng-src="{{selectedExtension.iconURL}}" alt="" class="img-circle extension-logo"/><br/>
+            <h2>{{selectedExtension.name}}</h2>
+            <p>{{selectedExtension.description}}</p>
+            <p ng-if="selectedExtension.version != ''">Version: <strong>{{selectedExtension.version}}</strong></p>
+            <strong>Extension is <span ng-if="selectedExtension.enabled">enabled</span><span ng-if="!selectedExtension.enabled">disabled</span></strong>
+          </div>
+        </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 stats-footer">
+              <div class="row">
+                <div class="col-md-6  col-xs-6 col-sm-6 text-center total-installed" >
+                     <h1 class="big-digit ">{{extensions.length}}</h1>
+                    <h5 style="color:white">Total Installed</h5>
+                </div>
+                
+                <div class="col-md-6 col-xs-6 col-sm-6 text-center">
+                  <h1 class="big-digit ">{{disabledItems.length}}</h1>
+                  <h5 style="color:white" >Total Disabled </h5>
+                </div>
+                
+              </div>
+            </div>
+
+      </div>
+           
+          <div class="col-md-7 sm-12 xs-12" style="padding:0;">
+            <div class="container-fluid">
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+            <div class="row navbar-default">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <form>
+        <div class="form-group">
+          <input type="text search-plugin" class="form-control" placeholder="Search" ng-model="searchText">
+        </div>
+              </form>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+     <ul class="action-menu pull-right" ng-if="1==2">
+        <li>
+          <a href="#"><i class="icon ion-ios-trash"></i></a>
+        </li>
+         <li>
+          <a href="#"><i class="icon ion-android-checkbox-outline"></i></a>
+        </li>
+      </ul>
+              </div>
+
+   
+            </div>
+            <!--.row-->
+              </div>
+           <!-- .col-md-12-->
+</div>
+<!--.container-fluid-->
+         <div class="extension-list">   
+            <div class="row" ng-repeat ="extension in extensions|filter:searchText as totalFound">
+              <div class="col-md-12 col-xs-12 ">    
+                 <div class="plugin-item">
+                   <div class="row">
+                     <div class="col-sm-9 col-xs-9 ">
+                     <extenionicon url="{{extension.iconURL}}"></extenionicon>
+                       
+                       <div class="plugin-description">
+                         <h4><a ng-click="selectExtension($index)" class="extension-title">{{extension.name}}</a></h4>
+                         <span>{{extension.description | maxLength:150}}</span>
+                       </div>
+                     </div>
+                          
+                       <div class="col-sm-3 col-xs-3 text-right">
+                         <ul class="plugin-action ">
+                         <li> <a href="#" title="Uninstall" ng-click="uninstallExtension(extension.id)"><i class="icon ion-ios-trash equal-width"></i></a> </li>
+                         <li  ng-if="extension.enabled"><a href="#" title="Disable" ng-click="disableExtension($index)"><i class="icon ion-android-checkbox-outline"></i></a></li>
+                         <li  ng-if="!extension.enabled"><a href="#" title="Enable" ng-click="enableExtension($index)"><i class="icon ion-android-checkbox-outline-blank"></i></a></li>
+                         </ul>
+                       </div>
+                   </div>
+                </div>
+              </div>
+              <!--col-md-12-->            
+            </div>
+            <!--.row-->
+            <div class="col-md-12" ng-if="totalFound.length==0" style="color:#ccc;font-size:18px;">
+              <h3>No match found</h3>
+            </div>
+            </div>
+               <div class="credit">
+                Developed with <strong>♥</strong> by <a href="https://bd.linkedin.com/in/rahul-baruri-23312311a" target="_blank">Rahul Baruri</a>
+               </div>
+          </div>
+        </div>
+     </div>
+  </div>
+
+</div>
+  <script src="assets/js/angular.min.js"></script>
+   <script src="assets/js/main.js"></script>
+</body>
+</html>

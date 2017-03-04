@@ -1,0 +1,29 @@
+{
+  "name": "Extension Manager",
+  "description": "This extension will assist you to manage installed extensions in your browser",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "38": "assets/icons/icon-32.png",
+    "128": "assets/icons/icon-128.png"
+  },
+
+  "background": {
+    "scripts": [
+      "assets/js/background.js",
+      "assets/js/main.js"
+    ],
+    "css": ["assets/css/style.css"],
+    "persistent": false
+  },
+"permissions": [
+    "https://code.ionicframework.com/ionicons/*",
+    "tabs",
+    "activeTab",
+     "management"
+],
+  "browser_action": {
+    "default_icon": "assets/icons/icon-20.png"
+  }
+}
