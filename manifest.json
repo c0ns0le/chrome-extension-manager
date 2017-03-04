@@ -1,7 +1,8 @@
 {
-  "name": "Extension Manager",
+  "name": "Chrome Extension Manager",
+  "short_name": "Extension Manager",
   "description": "This extension will assist you to manage installed extensions in your browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "icons": {
     "16": "assets/icons/icon-16.png",

@@ -81,7 +81,7 @@
                      <extenionicon url="{{extension.iconURL}}"></extenionicon>
                        
                        <div class="plugin-description">
-                         <h4><a ng-click="selectExtension($index)" class="extension-title">{{extension.name}}</a></h4>
+                         <h4><a ng-click="selectExtension(extension.id)" class="extension-title">{{extension.name}}</a></h4>
                          <span>{{extension.description | maxLength:150}}</span>
                        </div>
                      </div>
@@ -89,8 +89,8 @@
                        <div class="col-sm-3 col-xs-3 text-right">
                          <ul class="plugin-action ">
                          <li> <a href="#" title="Uninstall" ng-click="uninstallExtension(extension.id)"><i class="icon ion-ios-trash equal-width"></i></a> </li>
-                         <li  ng-if="extension.enabled"><a href="#" title="Disable" ng-click="disableExtension($index)"><i class="icon ion-android-checkbox-outline"></i></a></li>
-                         <li  ng-if="!extension.enabled"><a href="#" title="Enable" ng-click="enableExtension($index)"><i class="icon ion-android-checkbox-outline-blank"></i></a></li>
+                         <li  ng-if="extension.enabled"><a href="#" title="Disable" ng-click="disableExtension(extension.id)"><i class="icon ion-android-checkbox-outline"></i></a></li>
+                         <li  ng-if="!extension.enabled"><a href="#" title="Enable" ng-click="enableExtension(extension.id)"><i class="icon ion-android-checkbox-outline-blank"></i></a></li>
                          </ul>
                        </div>
                    </div>
